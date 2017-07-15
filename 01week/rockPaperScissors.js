@@ -7,19 +7,51 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+//A.I.
+let hands = [rock, paper, scissors];
+//A.I.
+function getHand2() {
+  return hands[Math.floor(Math.random() * 2)];
+}
 
 function rockPaperScissors(hand1, hand2) {
-
-  // Write code here
-
+  if (hand1 === hand2) {
+    return "It's a tie!";
+  }
+  if (hand1 === 'rock') {
+    if (hand2 === 'paper') {
+      return 'Hand two wins!';
+    }
+    else {
+      return 'Hand one wins!';
+    }
+  }
+  if (hand1 === 'paper') {
+    if (hand2 === 'scissors') {
+      return 'Hand two wins!';
+    }
+    else {
+      return 'Hand one wins!';
+    }
+  }
+  if (hand1 === 'scissors') {
+    if (hand2 === 'rock') {
+      return 'Hand two wins!';
+    }
+    else {
+      return 'Hand one wins!';
+    }
+  }
 }
+
+//cannot figure out A.I.
 
 function getPrompt() {
   rl.question('hand1: ', (answer1) => {
-    rl.question('hand2: ', (answer2) => {
-      console.log( rockPaperScissors(answer1, answer2) );
+    //rl.question('hand2: ', (answer2) => {
+      console.log( rockPaperScissors(answer1, answer2);
       getPrompt();
-    });
+    //});
   });
 }
 
