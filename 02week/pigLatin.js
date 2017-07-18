@@ -9,11 +9,22 @@ const rl = readline.createInterface({
 
 
 function pigLatin(word) {
-
-  // Your code here
-
+  let vowelArray = ['a', 'e', 'i', 'o', 'u'];
+  if(vowelArray.includes(word[0])) {
+    return word + 'yay';
+  }
+  else {
+    let firstPart;
+    let secondPart;
+    for (let i=1; i<word.length; i++) {
+      if(vowelArray.includes(word[i])) {
+        firstPart = word.slice(0, i);
+        secondPart = word.slice(i, word.length);
+        return secondPart + firstPart + "ay";
+      }
+    }
+  }
 }
-
 
 function getPrompt() {
   rl.question('word ', (answer) => {
