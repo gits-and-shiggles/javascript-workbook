@@ -1,3 +1,55 @@
+//
+// Conversation opened. 1 read message.
+//
+// Skip to content
+// Using Gmail with screen readers
+// 2
+// Search
+//
+//
+//
+// Gmail
+// COMPOSE
+// Labels
+// Inbox (718)
+// Starred
+// Important
+// Sent Mail
+// Drafts (40)
+// Personal
+// Travel
+// More
+// Hangouts
+//
+//
+//
+//
+//   More
+// 2 of 2,983
+//
+// Print all In new window
+// Instructor Solutions
+// Inbox
+// x
+//
+// Matt Viteri <matt@austincodingacademy.com>
+// Attachments6:19 PM (17 hours ago)
+//
+// to bcc: me
+// Hey guys,
+//
+// Here are the instructor solutions for pig latin and tic tac toe!
+//
+// 2 Attachments
+//
+//
+// Click here to Reply or Forward
+// 10.62 GB (70%) of 15 GB used
+// Manage
+// Terms - Privacy
+// Last account activity: 14 hours ago
+// Details
+
 'use strict';
 
 const assert = require('assert');
@@ -13,7 +65,6 @@ let board = [
 ];
 
 let playerTurn = 'X';
-let moveCount = 0; // this will be used to prevent a win event on an empty board.
 
 function printBoard() {
   console.log('   0  1  2');
@@ -24,53 +75,43 @@ function printBoard() {
   console.log('2 ' + board[2].join(' | '));
 }
 
-const pos1 = board[0][0];
-const pos2 = board[0][1];
-const pos3 = board[0][2];
-const pos4 = board[1][0];
-const pos5 = board[1][1];
-const pos6 = board[1][2];
-const pos7 = board[2][0];
-const pos8 = board[2][1];
-const pos9 = board[2][2];
-
 function horizontalWin() {
-  if ((pos1 === pos2 && pos2 === pos3) ||
-  (pos4 === pos5 && pos5 === pos6) ||
-  (pos7 === pos8 && pos8 === pos9)){
-    return true;
-  }
+  return (
+    (board[0][0] === playerTurn && board[0][1] === playerTurn && board[0][2] === playerTurn) ||
+    (board[1][0] === playerTurn && board[1][1] === playerTurn && board[1][2] === playerTurn) ||
+    (board[2][0] === playerTurn && board[2][1] === playerTurn && board[2][2] === playerTurn)
+  );
 }
 
 function verticalWin() {
-  if ((pos1 === pos4 && pos4 === pos7) ||
-  (pos2 === pos5 && pos5 === pos8) ||
-  (pos3 === pos6 && pos6 === pos9)){
-    return true;
-  }
+  return (
+    (board[0][0] === playerTurn && board[1][0] === playerTurn && board[2][0] === playerTurn) ||
+    (board[0][1] === playerTurn && board[1][1] === playerTurn && board[2][1] === playerTurn) ||
+    (board[0][2] === playerTurn && board[1][2] === playerTurn && board[2][2] === playerTurn)
+  );
 }
 
 function diagonalWin() {
-  if ((pos1 === pos5 && pos5 === pos9) ||
-  (pos3 === pos5 && pos5 === pos9)){
-    return true;
-  }
+  return (
+    (board[0][0] === playerTurn && board[1][1] === playerTurn && board[2][2] === playerTurn) ||
+    (board[2][0] === playerTurn && board[1][1] === playerTurn && board[0][2] === playerTurn)
+  );
 }
 
 function checkForWin() {
-  if (horizontalWin() || verticalWin() || diagonalWin()){
-    console.log('Player '+playerTurn+' wins!');
+  if ( horizontalWin() || verticalWin() || diagonalWin() ) {
+    console.log('Player ' +  playerTurn + ' Won!'); // announce to the world
     return true;
   }
+  return false;
 }
 
 function ticTacToe(row, column) {
+  // Your code here
   board[row][column] = playerTurn;
-  if (moveCount > 0){
-    checkForWin();
+  if (!checkForWin()) {
+    playerTurn = (playerTurn === 'X') ? 'O' : 'X';
   }
-  moveCount ++;
-  playerTurn = (playerTurn === "X" ? "O" : "X");
 }
 
 function getPrompt() {
@@ -82,6 +123,7 @@ function getPrompt() {
       getPrompt();
     });
   });
+
 }
 
 
@@ -120,3 +162,6 @@ if (typeof describe === 'function') {
   getPrompt();
 
 }
+// instructorSolution-ticTacToe.txt
+// Open with
+// Displaying instructorSolution-ticTacToe.txt.
