@@ -16,14 +16,71 @@ for (let i = 0; i < 1000; i++) {
 
 function bubbleSort(arr) {
   // Your code here
+  for(let i = 0; i < arr.length -1; i++) {
+    if(arr[i] > arr[i+1])
+    var temp = arr[i];
+    arr[i] = arr[i+1];
+    arr[i] = temp;
+  }
+  return arr;
 }
 
 function mergeSort(arr) {
   // Your code here
+  if (arr.length <= 1){
+    return arr;
+  }
+  var middle = Math.floor(arr.length/2);
+  var left = arr.slice(0, middle);
+  var right = arr.slice(middle, arr.length-1);
+  var result = [];
+  var indexLeft = 0;
+  var indexRight = 0;
+
+  while (indexLeft < left.length && indexRight < right.lenght){
+    var elementLeft = left[indexLeft];
+    var elementRight = right[indexRight];
+
+    if (elementLeft <= elementRight){
+      result.push(elementLeft);
+      elementLeft ++;
+    } else {
+      result.push(elementRight);
+      elementRight ++;
+    }
+  }
+
+  while (indexLeft < left.length){
+    result.push(elementLeft);
+    elementLeft ++;
+  }
+  while (indexRight < right.lenght) {
+    result.push(elementRight);
+    elementRight ++;
+  }
+  return result;
 }
+
+
 
 function binarySearch(arr, item) {
   // Your code here
+  var min = 0;
+  var max = arr.length - 1;
+  var guess = Math.floor((min + max)/2);
+
+  while(min <= max){
+    if(arr[guess] === item){
+      return guess;
+    }
+    else if(item < arr[guess]){
+      max = guess - 1;
+    }
+    else {
+      min = guess + 1;
+    }
+  }
+  return -1;
 }
 
 // Tests

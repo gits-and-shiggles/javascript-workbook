@@ -28,15 +28,38 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint() {
+function generateHint(guess) {
   // your code here
+  var red = 0;
+  var white = 0;
+  var guessArr = guess.split('');
+
+  function result(guess){
+    for(var i = 0; i < solution.length; i++){
+      if(guessArr[i] === solution[i]){
+        red++;
+      }
+      else if (guessArr.includes(solution[i])){
+        white++;
+      }
+    }
+  }
+  result(guess);
+  board.push(guess + ' ' + 'Red: '+ red + ' ' + 'White: ' + white);
+}
+
+function checkForWin(guess) {
+  if(guess === solution){
+    console.log("You cracked the code!");
+  }
 }
 
 function mastermind(guess) {
   solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
+  generateHint(guess);
+  checkForWin(guess);
 }
-
 
 function getPrompt() {
   rl.question('guess: ', (guess) => {
