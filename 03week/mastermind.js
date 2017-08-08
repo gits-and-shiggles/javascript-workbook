@@ -34,6 +34,11 @@ function generateHint(guess) {
   var white = 0;
   var guessArr = guess.split('');
 
+  if(guess === solution){
+      console.log("You cracked the code!");
+      return;
+  }
+
   function result(guess){
     for(var i = 0; i < solution.length; i++){
       if(guessArr[i] === solution[i]){
@@ -48,17 +53,17 @@ function generateHint(guess) {
   board.push(guess + ' ' + 'Red: '+ red + ' ' + 'White: ' + white);
 }
 
-function checkForWin(guess) {
-  if(guess === solution){
-    console.log("You cracked the code!");
-  }
-}
+// function checkForWin(guess) {
+//   if(guess === solution){
+//     console.log("You cracked the code!");
+//   }
+// }
 
 function mastermind(guess) {
   solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
   generateHint(guess);
-  checkForWin(guess);
+  // checkForWin(guess);
 }
 
 function getPrompt() {
