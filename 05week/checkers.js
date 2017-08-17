@@ -8,8 +8,13 @@ const rl = readline.createInterface({
 });
 
 
-function Checker() {
+function Checker(color) {
   // Your code here
+  if(color === 'white'){
+    this.symbol = 'B';
+  } else {
+    this.symbol = 'W';
+  }
 }
 
 function Board() {
@@ -53,15 +58,19 @@ function Board() {
   };
 
   // Your code here
-}
-function Game() {
+  this.createCheckers = function() {
+    const whiteCheckers = [[0,1],[0,3],[0,5],[0,7],[1,0],[1,2],[1,4],[1,6],[2,1],[2,3],[2,5],[2,7]];
+    const blackCheckers = [[5,0],[5,2],[5,4],[5,6],[6,1],[6,3],[6,5],[6,7],[7,0],[7,2],[7,4],[7,6]];
+  }
 
-  this.board = new Board();
-
-  this.start = function() {
-    this.board.createGrid();
-    // Your code here
-  };
+  function Game() {
+    this.board = new Board();
+    this.start = function() {
+      this.board.createGrid();
+      // Your code here
+      this.board.createCheckers();
+    }
+  }
 }
 
 function getPrompt() {
