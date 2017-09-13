@@ -1,0 +1,40 @@
+body{
+background-color: #EF0C82;
+}
+header {
+  height: 10vh;
+  width: 100%;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+h1 {
+  padding-right: 5vw;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url(https://hateandanger.files.wordpress.com/2012/06/itunes-ipod-style-advertisement-with-a-gentleman-from-yesteryear-dancing-and-listening-to-his-gramophone-using-ear-buds.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vh;
+  background-position: center;
+}
+.anc {
+  height: 7vh;
+  width: 25vw;
+  margin-top: 1vh;
+}
+li {
+  background-color: black;
+  color: white;
+  height: 7vh;
+  width: 25vw;
+  margin-top: 1vh;
+  padding-left: 2vw;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
